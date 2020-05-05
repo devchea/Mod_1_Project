@@ -4,15 +4,11 @@ require 'sinatra/activerecord/rake'
 desc 'starts a console'
 task :console do
   ActiveRecord::Base.logger = Logger.new(STDOUT)
+
+
+  x = rand(Character.last.id - Character.first.id) + Character.first.id
   Pry.start
 end
 
 
-# require_relative 'config/environment.rb'
-# require "sinatra/activerecord/rake"
-
-# desc "start console"
-# task :console do
-#   Pry.start
-# end
 

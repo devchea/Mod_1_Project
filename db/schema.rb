@@ -10,15 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_033357) do
+ActiveRecord::Schema.define(version: 2020_05_05_170051) do
+
+  create_table "actors", force: :cascade do |t|
+    t.integer "character_id"
+    t.string "actor"
+  end
+
+  create_table "ancestries", force: :cascade do |t|
+    t.integer "character_id"
+    t.string "ancestry"
+  end
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
-    t.string "species"
+  end
+
+  create_table "genders", force: :cascade do |t|
+    t.integer "character_id"
     t.string "gender"
+  end
+
+  create_table "houses", force: :cascade do |t|
+    t.integer "character_id"
     t.string "house"
-    t.string "ancestry"
-    t.string "actor"
   end
 
 end
