@@ -16,7 +16,7 @@ Actor.destroy_all
     data_hash.each do |c|
       c1 = Character.create(name: c["name"])
       Gender.create(character_id: c1.id, gender: c["gender"])
-      House.create(character_id: c1.id, house: c["house"])
+      House.create(character_id: c1.id, house: c["house"] )
       Ancestry.create(character_id: c1.id, ancestry: c["ancestry"])
       Actor.create(character_id: c1.id, actor: c["actor"])
      end

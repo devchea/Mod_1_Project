@@ -1,6 +1,9 @@
-Tuesday - Have one working question/answer
-Wednesday
-Thursday - Complete by EOD
+Tuesday - Questions completed
+  Questions - Level variable? Global? Pass between files? 
+      How to use a method in a different file in our current file?
+      How to call correct/wrong method from question file?
+Wednesday - Implement levels, Call main run.rb file to run game
+Thursday - Add featuresComplete by EOD
 Friday - Record YT video, make it pretty, discuss presentation
 
 
@@ -11,3 +14,10 @@ Question 4 - Name the actor that plays this character in the movie series
 
 
 
+welcome 
+current game level 
+question random
+    -correct or wrong
+        -check game level
+
+question random
