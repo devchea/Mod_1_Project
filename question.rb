@@ -7,24 +7,26 @@ prompt = TTY::Prompt.new
 
 # # questions = [question1, question2, question3 question4]
 
-# level = 1
+$level = 1
 
 def randomID    #generates a random id number 
     rand(Character.last.id - Character.first.id) + Character.first.id
 end
 
 def correct
-    # level += 1
+    $level += 1
     puts "You are correct & move up one level!"
-    puts "You are now level #{level}"
+    puts "You are now level #{$level}"
+    
     # if level == 7
     #     puts "You have graduated from Hogwarts! Congrats on completing your journey!"
     # end
 end
 
 def wrong
-    # level -= 1
+    $level -= 1
     puts "You are wrong & move down one level!"
+    puts "You are now level #{$level}"
     # if level == 0
     #     puts "you have lost. Game over!"
     # end
@@ -97,4 +99,11 @@ def question4   #actor question
     end
 end
 question1
+question1
+question1
+question1
+
+
+
+
 
