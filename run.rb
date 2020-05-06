@@ -3,6 +3,8 @@ require "tty-prompt"
 # $prompt = TTY::Prompt.new
 require 'pry'
 require_relative './question.rb'
+# require_relative './logo.txt'
+# require './logo.txt'
 
 
 
@@ -18,48 +20,30 @@ def main
     end
 
     def logo
-      box = TTY::Box.frame "_ __
-        ___                             | '  \
-   ___  \ /  ___         ,'\_           | .-. \        /|
-   \ /  | |,'__ \  ,'\_  |   \          | | | |      ,' |_   /|
- _ | |  | |\/  \ \ |   \ | |\_|    _    | |_| |   _ '-. .-',' |_   _
-// | |  | |____| | | |\_|| |__    //    |     | ,'_`. | | '-. .-',' `. ,'\_
-\\_| |_,' .-, _  | | |   | |\ \  //    .| |\_/ | / \ || |   | | / |\  \|   \
- `-. .-'| |/ / | | | |   | | \ \//     |  |    | | | || |   | | | |_\ || |\_|
-   | |  | || \_| | | |   /_\  \ /      | |`    | | | || |   | | | .---'| |
-   | |  | |\___,_\ /_\ _      //       | |     | \_/ || |   | | | |  /\| |
-   /_\  | |           //_____//       .||`      `._,' | |   | | \ `-' /| |
-        /_\           `------'        \ |   AND        `.\  | |  `._,' /_\
-                                       \|       THE          `.\
-                                            _  _  _  _  __ _  __ _ /_
-                                           (_`/ \|_)/ '|_ |_)|_ |_)(_
-                                           ._)\_/| \\_,|__| \|__| \ _)
-                                                           _ ___ _      _
-                                                          (_` | / \|\ ||__
-                                                          ._) | \_/| \||___", padding: 0, align: :left
-      print box
+        File.readlines("logo.txt").each do |line|
+        puts line
+      end
     end
 
 
     def prompt_questions 
-        loop do
-            random_question
-            if $level > 3
-                break
-            elsif $level <=0
-                break
-            end
-        end
+         loop do
+             random_question
+              if $level > 3
+                  break
+              elsif $level <=0
+                 break
+               end
+          end
+      end
+
+
     end
-
-
-end
-
+# binding.pry
 main
 welcome
 logo
 # prompt_questions
-
 
 
 
