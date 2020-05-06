@@ -1,0 +1,21 @@
+    ┌─────────────────────────────────────────────────────────┐
+      HOGWARTS SCHOOL of WITCHCRAFT and WIZARDRY
+
+      Dear Mr/Ms,
+      We are pleased to inform you that you have been 
+      accepted at Hogwarts School of Witchcraft and Wizardry.
+      Please find enclosed a list of all necessary books and 
+      equipment.Term begins on 1 September. We await your 
+      owl by no later than 31 July.
+
+      First-year students will require:
+      ~Your Keyboard
+
+      Yours sincerely,
+      Albus Dumbledore
+      Headmaster
+    └────────────────────────────────────────────────────────┘
+
+
+
+

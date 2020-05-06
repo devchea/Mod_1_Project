@@ -4,45 +4,71 @@ require 'tty-prompt'
 prompt = TTY::Prompt.new
 require 'pry'
 
-
-# # questions = [question1, question2, question3 question4]
-
 $level = 1
+$question_count = 0
 
 def randomID    #generates a random id number 
     rand(Character.last.id - Character.first.id) + Character.first.id
 end
 
-def level_output
+def level_output    #just outputs all years, your current is highlighted 
     array_levels = ["1", "2", "3", "4", "5", "6", "7"]
-    array_levels[$level-1] = array_levels[$level-1].colorize(:red)
-    puts "Your current year: #{array_levels.join("-")}"
-    puts "\n"
-    # binding.pry
-    
+
+    array_levels[$level-1] = "*#{$level}*"
+    array_levels[$level-1] = array_levels[$level-1].colorize(:magenta)
+    puts "Your current year: #{array_levels.join(" ")}"
+    array_levels[$level-1] = "#{$level}"
+
+    empty_line
+    empty_line
 end
+
 
 def correct
     $level += 1
-    puts "You are correct & move up one level!"
-    # puts "You are now level #{$level}"
-    if $level > 3
-        puts "You have graduated from Hogwarts! Congrats on completing your journey!"
+    $question_count += 1
+    empty_line
+    correct = "correct".colorize(:green)
+    puts "You are #{correct} & move up a year!"
+    if $level > 4
+        winner_prompt
     else
-        level_output
+      end_of_question
     end
 end
 
 def wrong
     $level -= 1
-    puts "You are wrong & move down one level!"
-    # puts "You are now level #{$level}"
+    empty_line
+    wrong = "wrong".colorize(:red)
+    puts "You are #{wrong} & move down a year!"
     if $level == 0
-        puts "You have lost. Game over!"
+        loser_prompt
     else
-      level_output
+      end_of_question
     end
 end
+
+def end_of_question
+    empty_line
+    level_output
+    continue
+end
+
+def random_question
+    num = rand(0..3)
+    case num
+    when 0
+        question1
+    when 1
+        question2
+    when 2
+        question3
+    when 3
+        question4
+    end
+end
+
 
 def question1 #gender question
     r = randomID
@@ -110,29 +136,4 @@ def question4   #actor question
         wrong
     end
 end
-
-
-def random_question
-    num = rand(0..3)
-    case num
-    when 0
-        question1
-    when 1
-        question2
-    when 2
-        question3
-    when 3
-        question4
-    end
-end
-
-
-# loop do
-#     random_question
-#     if $level >=3
-#         break
-#     elsif $level <=0
-#         break
-#     end
-# end
 
