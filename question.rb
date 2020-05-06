@@ -2,7 +2,7 @@ require_relative './config/environment'
 require 'tty-prompt'
 # # ActiveRecord::Base.logger.level = 1
 prompt = TTY::Prompt.new
-# require 'pry'
+require 'pry'
 
 
 # # questions = [question1, question2, question3 question4]
@@ -13,23 +13,35 @@ def randomID    #generates a random id number
     rand(Character.last.id - Character.first.id) + Character.first.id
 end
 
+def level_output
+    array_levels = ["1", "2", "3", "4", "5", "6", "7"]
+    array_levels[$level-1] = array_levels[$level-1].colorize(:red)
+    puts "Your current year: #{array_levels.join("-")}"
+    puts "\n"
+    # binding.pry
+    
+end
+
 def correct
     $level += 1
     puts "You are correct & move up one level!"
-    puts "You are now level #{$level}"
-    
-    # if level == 7
-    #     puts "You have graduated from Hogwarts! Congrats on completing your journey!"
-    # end
+    # puts "You are now level #{$level}"
+    if $level > 3
+        puts "You have graduated from Hogwarts! Congrats on completing your journey!"
+    else
+        level_output
+    end
 end
 
 def wrong
     $level -= 1
     puts "You are wrong & move down one level!"
-    puts "You are now level #{$level}"
-    # if level == 0
-    #     puts "you have lost. Game over!"
-    # end
+    # puts "You are now level #{$level}"
+    if $level == 0
+        puts "You have lost. Game over!"
+    else
+      level_output
+    end
 end
 
 def question1 #gender question
@@ -98,12 +110,29 @@ def question4   #actor question
         wrong
     end
 end
-question1
-question1
-question1
-question1
 
 
+def random_question
+    num = rand(0..3)
+    case num
+    when 0
+        question1
+    when 1
+        question2
+    when 2
+        question3
+    when 3
+        question4
+    end
+end
 
 
+# loop do
+#     random_question
+#     if $level >=3
+#         break
+#     elsif $level <=0
+#         break
+#     end
+# end
 

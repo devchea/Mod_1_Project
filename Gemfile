@@ -8,7 +8,8 @@ gem 'rake'
 # gem 'database_cleaner'
 gem 'require_all'
 gem 'tty-prompt'
-
+gem 'colorize'
+gem 'tty-box'
 #from lecture:
 # gem 'net/http'
 # gem 'open-uri'
