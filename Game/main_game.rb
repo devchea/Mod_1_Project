@@ -1,6 +1,5 @@
 $name = " "
 
-
 def welcome #welcome to the game
   logo
   empty_line
@@ -10,8 +9,7 @@ def welcome #welcome to the game
 end
 
 def start_game
-  prompt = TTY::Prompt.new
-  input = prompt.select("Would you like to play the game?", %w(Yes No))
+  input = $prompt.select("Would you like to play the game?", %w(Yes No))
   if input == "Yes"
     empty_line
     get_username

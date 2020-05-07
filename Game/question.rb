@@ -2,6 +2,7 @@ require 'pry'
 
 $level = 1
 $question_count = 0
+$prompt = TTY::Prompt.new(active_color: :blue)
 
 def randomID    #generates a random id number for use in formulating questions
     rand(Character.last.id - Character.first.id) + Character.first.id
@@ -55,9 +56,8 @@ def question1 #gender question
     r = randomID
     find_char = Character.find_by(id: r)
     answer = Gender.find_by(id: find_char.gender_id).sex
-    prompt = TTY::Prompt.new
-    input = prompt.select("Is #{find_char.name} a male or female?", %w(male female))
-
+  
+    input = $prompt.select("Is #{find_char.name} a male or female?", %w(male female))
     (input == answer) ? correct : wrong(answer)
 end
 
@@ -67,8 +67,7 @@ def question2    #house question
     find_char = Character.find_by(id: r)
     answer = House.find_by(id: find_char.house_id).name
 
-    prompt = TTY::Prompt.new
-    input = prompt.select("What house does #{find_char.name} belong to?", %w(Gryffindor Slytherin HufflePuff Ravenclaw none))
+    input = $prompt.select("What house does #{find_char.name} belong to?", %w(Gryffindor Slytherin HufflePuff Ravenclaw none))
     (input == answer) ? correct : wrong(answer)
 end
 
@@ -77,8 +76,7 @@ def question3   #ancestry question
     find_char = Character.find_by(id: r)
     answer = Ancestry.find_by(id: find_char.ancestry_id).kind
 
-    prompt = TTY::Prompt.new
-    input = prompt.select("What is #{find_char.name}'s ancestry?", %w(half-blood muggleborn pure-blood squib none))
+    input = $prompt.select("What is #{find_char.name}'s ancestry?", %w(half-blood muggleborn pure-blood squib none))
     (input == answer) ? correct : wrong(answer)
 end
 
@@ -90,8 +88,7 @@ def question4   #actor question
     answer = Character.find_by(id: x[0]).actor
     choices = [Character.find_by(id: x[0]).actor, Character.find_by(id: x[1]).actor, Character.find_by(id: x[2]).actor, Character.find_by(id: x[3]).actor].shuffle
 
-    prompt = TTY::Prompt.new
-    input = prompt.select("What actor/actress plays #{Character.find_by(id: x[0]).name}?", choices)
+    input = $prompt.select("What actor/actress plays #{Character.find_by(id: x[0]).name}?", choices)
     (input == answer) ? correct : wrong(answer)
 end
 
