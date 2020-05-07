@@ -37,8 +37,8 @@ def prompt_questions
     logo
     empty_line
     empty_line
-    question4
-    # random_question
+    # question4
+    random_question
   end
 end
 
