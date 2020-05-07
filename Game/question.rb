@@ -36,7 +36,7 @@ def correct     #what happens when your answer is CORRECT
     empty_line
     correct = "correct".colorize(:green)
     puts "You are #{correct} & move up a year!"
-    ($level > 4) ? winner_prompt : end_of_question
+    ($level > 7) ? winner_prompt : end_of_question
 end
 
 def wrong       #what happens when your answer is WRONG
