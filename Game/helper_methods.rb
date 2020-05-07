@@ -8,10 +8,6 @@ def acceptance_letter
   File.readlines("./Text_Images/letter.txt").each {|line| puts line}
 end
 
-def empty_line
-  puts "\n"
-end
-
 def continue
   empty_line
   empty_line
@@ -19,12 +15,16 @@ def continue
   gets
 end
 
-def clear
-  puts `clear`
-end
-
 def end_of_question
   empty_line
   level_output
   continue
+end
+
+def empty_line
+  puts "\n"
+end
+
+def clear
+  puts `clear`
 end

@@ -27,7 +27,7 @@ def prompt_questions
     logo
     empty_line
     empty_line
-    question2
+    question1
     # random_question
   end
 end

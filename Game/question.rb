@@ -24,11 +24,10 @@ def random_question #generates a random question
     end
 end
 
-def level_output    #just outputs all years, your current is highlighted 
+def level_output    #just outputs all years, your current is highlighted
     array_levels = ["1", "2", "3", "4", "5", "6", "7"]
-    array_levels[$level-1] = "*#{$level}*"  #adds the astericks to the current level
-    array_levels[$level-1] = array_levels[$level-1].colorize(:magenta)  #colorizes astericks and current level
-    puts "Your current year: #{array_levels.join(" ")}"     
+    array_levels[$level-1] = "*#{$level}*".colorize(:magenta)  #adds the astericks & colorizes current level
+    puts "Your current year: #{array_levels.join(" ")}"
     array_levels[$level-1] = "#{$level}"    #removes astericks from the current level
     empty_line
     empty_line
@@ -40,11 +39,7 @@ def correct     #what happens when your answer is CORRECT
     empty_line
     correct = "correct".colorize(:green)
     puts "You are #{correct} & move up a year!"
-    if $level > 4
-        winner_prompt
-    else
-      end_of_question
-    end
+    ($level > 4) ? winner_prompt : end_of_question
 end
 
 def wrong       #what happens when your answer is WRONG
@@ -52,11 +47,7 @@ def wrong       #what happens when your answer is WRONG
     empty_line
     wrong = "wrong".colorize(:red)
     puts "You are #{wrong} & move down a year!"
-    if $level == 0
-        loser_prompt
-    else
-        end_of_question
-    end
+    ($level == 0) ? loser_prompt : end_of_question
 end
 
 
@@ -65,7 +56,6 @@ def question1 #gender question
     find_char = Character.find_by(id: r)
     prompt = TTY::Prompt.new
     input = prompt.select("Is #{find_char.name} a male or female?", %w(male female))
-
 
     if (input == "male") && (find_char.gender.gender == "male")
         correct
@@ -80,44 +70,21 @@ end
 def question2    #house question
     r = randomID
     find_char = Character.find_by(id: r)
-    
     find_char.house.house = "none" unless find_char.house.house != ""
-    # if find_char.house.house == ""
-    #     find_char.house.house = "none"
-    # end
 
     prompt = TTY::Prompt.new
     input = prompt.select("What house does #{find_char.name} belong to?", %w(Gryffindor Slytherin HufflePuff Ravenclaw none))
     (input == find_char.house.house) ? correct : wrong
-   
-    # if input == find_char.house.house
-    #     correct
-    # else
-    #     wrong
-    # end
 end
 
 def question3   #ancestry question
     r = randomID
     find_char = Character.find_by(id: r)
-
-    find_char.ancestry.ancestry = "none" unless find_ancestry.ancestry != ""
-
-    # if find_char.ancestry.ancestry == ""
-    #     find_char.ancestry.ancestry = "none"
-    # end
+    find_char.ancestry.ancestry = "none" unless find_char.ancestry.ancestry != ""
 
     prompt = TTY::Prompt.new
     input = prompt.select("What is #{find_char.name}'s ancestry?", %w(half-blood muggleborn pure-blood squib none))
-    # binding.pry
-
     (input == find_char.ancestry.ancestry) ? correct : wrong
-
-    # if input == find_char.ancestry.ancestry
-    #     correct
-    # else
-    #     wrong
-    # end
 end
 
 def question4   #actor question
@@ -130,12 +97,6 @@ def question4   #actor question
 
     prompt = TTY::Prompt.new
     input = prompt.select("What actor/actress plays #{Character.find_by(id: x[0]).name}?", choices)
-
     (input == correct_ans) ? correct : wrong
-    # if input == correct_ans
-    #    correct
-    # else
-    #     wrong
-    # end
 end
 
